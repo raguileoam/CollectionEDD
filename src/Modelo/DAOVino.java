@@ -15,14 +15,16 @@ import java.util.*;
 
 
 /**
- *
+ * A partir de un archivo JSON se extraen datos los cuales son agregados a una coleccion de clase.
  */
 public class DAOVino {
 
     public static void loadJSON(String JSON_FILE,Collection list){
         JSONParser parser = new JSONParser();
+        //Grupo de datos de vino
         JSONArray json = null;
         try {
+            //Pasan los datos de vino del json a el JSONArray
             json = (JSONArray) parser.parse(new FileReader(JSON_FILE));
         } catch (IOException e) {
             e.printStackTrace();
@@ -31,6 +33,7 @@ public class DAOVino {
         }
         Iterator iterator = json.iterator();
         while (iterator.hasNext()) {
+            //En cada dato de vino existe un precio,pais,descripcion y titulo.
             JSONObject features = (JSONObject) iterator.next();
             long precio = 0;
             String country="";
@@ -49,8 +52,8 @@ public class DAOVino {
             description = (String) features.get("description");
 
             country = (String) features.get("country");
-            Vino d=new Vino(precio, country, description, title);
-            list.add(d);
+            Vino vino=new Vino(precio, country, description, title);
+            list.add(vino);
 
 
 

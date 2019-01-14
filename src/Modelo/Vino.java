@@ -9,8 +9,8 @@ package Modelo;
  *
  */
 public class Vino implements Comparable<Vino>{
-    String country,description,title;
-    long price;
+    private String country,description,title;
+    private long price;
 
 
     public Vino(long price, String country, String description, String title) {
